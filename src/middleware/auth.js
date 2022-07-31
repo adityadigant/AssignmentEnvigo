@@ -68,7 +68,7 @@ const authorisation = async function (req, res, next) {
       if (req.userId !== userId) {
         return res.status(403).send({
           status: false,
-          msg: `Authorisation Failed! You are logged in ${req.userId} not as ${userId}`,
+          msg: `Authorisation Failed!`,
         });
       } else if (req.userId === userId) {
         next();

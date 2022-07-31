@@ -18,7 +18,6 @@ const {
 const createUser = async function (req, res) {
   try {
     let requestBody = req.body;
-
     //Check if data is present in request body or not
     if (!isValidRequestBody(requestBody)) {
       return res
@@ -203,7 +202,7 @@ const loginUser = async function (req, res) {
         email: checkData.email.toString(),
         userId: loginCredentials,
       },
-      "xpyna91skajsusldsje8js",
+      process.env.JWT_TOKEN,
       {
         expiresIn: "1h",
       }
@@ -291,7 +290,7 @@ const updateUser = async function (req, res) {
         .status(400)
         .send({ status: false, message: "Phone number is already Present" });
     }
-
+  
     //checking if file is coming
     let files = req.files;
     if (files && files.length > 0) {
